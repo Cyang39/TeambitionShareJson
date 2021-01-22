@@ -23,6 +23,11 @@
 - [FlxSNX/TeambitionShare](https://github.com/FlxSNX/TeambitionShare)
 - [Teambition项目直链解析平台，无限容量，无需内测，支持永久直链，列目录，目录加密](https://www.jianshu.com/p/af2f569abe83)
 
+## 目录密码
+- 项目列表密码在 `config.js` 中设置;
+- 目录密码可在对应目录下创建一个 `.password` 文件，文件名为目录密码，例如`123456.password`;
+- 访问带有密码的目录，需要 URL 参数 `passwrod`，例如`/?password=123456`。
+
 ## 部署说明
 1. 下载 / 克隆本项目
 2. 在`config.js`中设置`cookie`和根地址密码（详见注释）
