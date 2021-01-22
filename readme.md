@@ -49,4 +49,4 @@
 - 个人日常使用的话，腾讯云和阿里云的免费额度完全够用;
 - 可以选择最低的 64MB 内存的配置（阿里云最低 128MB），实际每次调用仅 20MB;
 - API 绑定私有域名需要备案，但 github/coding pages 不需要，因此可以通过此 API 构建私有域名 [SPA](https://github.com/rafgraph/spa-github-pages) 网盘;
-- 如不绑定私有域名，阿里云函数会在响应头目强制添加`Content-Disposition: attachment`，即使返回`json`也会被下载，但对 API 使用无影响。
+- 如不绑定私有域名，阿里云函数会在响应头目强制添加`Content-Disposition: attachment`，即使返回`json`也会被下载，但对 API 使用无影响（腾讯云无此规则）。
