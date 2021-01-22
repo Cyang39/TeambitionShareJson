@@ -45,4 +45,4 @@
 - 若 cookie 过期，可直接在线编辑更新并重新部署;
 - 个人日常使用的话，腾讯云函数调用的免费额度基本够用;
 - 可以选择最低的 64MB 内存的配置，实际每次调用仅 20MB;
-- API 绑定私有域名需要备案，但 github/coding pages 不需要，可以通过此 API 构建私有域名 SPA 网盘。
+- API 绑定私有域名需要备案，但 github/coding pages 不需要，可以通过此 API 构建私有域名 [SPA](https://github.com/rafgraph/spa-github-pages) 网盘。
