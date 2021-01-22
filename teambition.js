@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+let my_fetch = typeof Deno === 'undefined' ? require("node-fetch") : fetch;
 
 /**
  * 获取项目列表
@@ -14,7 +14,7 @@ async function get_projects(cookie) {
     pageToken: "",
     pageSize: "20", // 目前只读取 20 个项目
   });
-  const res = await fetch(api + params.toString(), { headers: { cookie } });
+  const res = await my_fetch(api + params.toString(), { headers: { cookie } });
   return (await res.json()).result;
 }
 
@@ -26,7 +26,7 @@ async function get_projects(cookie) {
  */
 async function get_project(projectID, cookie) {
   const api = "https://www.teambition.com/api/projects/" + projectID;
-  const result = await fetch(api, { headers: { cookie } });
+  const result = await my_fetch(api, { headers: { cookie } });
   return await result.json();
 }
 
@@ -50,7 +50,7 @@ async function get_dirs(
     count: "" + count,
     page: "" + page,
   });
-  const result = await fetch(api + param.toString(), { headers: { cookie } });
+  const result = await my_fetch(api + param.toString(), { headers: { cookie } });
   return await result.json();
 }
 
@@ -62,7 +62,7 @@ async function get_dirs(
  */
 async function get_dir(parentId, cookie) {
   const api = "https://www.teambition.com/api/collections/" + parentId;
-  const result = await fetch(api, { headers: { cookie } });
+  const result = await my_fetch(api, { headers: { cookie } });
   return await result.json();
 }
 
@@ -87,7 +87,7 @@ async function get_files(
     count: "" + count,
     page: "" + page,
   });
-  const result = await fetch(api + param.toString(), { headers: { cookie } });
+  const result = await my_fetch(api + param.toString(), { headers: { cookie } });
   return await result.json();
 }
 
@@ -99,7 +99,7 @@ async function get_files(
  */
 async function get_file(parentId, cookie) {
   const api = "https://www.teambition.com/api/works/" + parentId;
-  const result = await fetch(api, { headers: { cookie } });
+  const result = await my_fetch(api, { headers: { cookie } });
   const data = await result.json();
   if (data["downloadUrl"]) {
     return data;
