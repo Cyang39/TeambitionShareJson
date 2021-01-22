@@ -95,6 +95,39 @@ function res_500() {
   };
 }
 
+function ali_200(resp, body) {
+  if (typeof body !== "string") {
+    body = JSON.stringify(body);
+  }
+  resp.setStatusCode(200);
+  resp.setHeader("Content-Type", "application/json; charset=utf-8");
+  resp.send(body);
+}
+
+function ali_302(resp, url) {
+  resp.setStatusCode(302);
+  resp.setHeader("Location", url);
+  resp.send(url);
+}
+
+function ali_403(resp) {
+  resp.setStatusCode(403);
+  resp.setHeader("Content-Type", "application/json; charset=utf-8");
+  resp.send('{"name":"Forbidden","message":"访问被拒绝"}');
+}
+
+function ali_404(resp) {
+  resp.setStatusCode(404);
+  resp.setHeader("Content-Type", "application/json; charset=utf-8");
+  resp.send('{"name":"NotFound","message":"项目不存在"}');
+}
+
+function ali_500(resp) {
+  resp.setStatusCode(500);
+  resp.setHeader("Content-Type", "application/json; charset=utf-8");
+  resp.send('{"name":"InternalServerError","message":"服务器内部错误"}');
+}
+
 module.exports = {
   str_path,
   str_pass,
@@ -104,4 +137,9 @@ module.exports = {
   res_403,
   res_404,
   res_500,
+  ali_200,
+  ali_302,
+  ali_403,
+  ali_404,
+  ali_500,
 };

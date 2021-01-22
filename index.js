@@ -37,3 +37,38 @@ exports.main_handler = async (event, context, callback) => {
     return u.res_500();
   }
 };
+
+exports.handler = async (req, resp, context) => {
+  const path = req.path ? req.path : "/";
+  const pass = req.queries.password ? req.queries.password : "";
+
+  try {
+    if (path === "/") {
+      // 根地址
+      if (root_password && root_password !== pass) return u.ali_403(resp);
+      const projects = await t.get_projects(cookie);
+      const filtered_projects = projects.map(f.project);
+      return u.ali_200(resp, filtered_projects);
+    } else if (/^\/[0-9a-z]+$/.test(path)) {
+      // 目录地址
+      const dirId = path.split("/")[1];
+      const files = await t.get_files(dirId, cookie);
+      const dir_pass = u.pick_pass(files);
+      if (dir_pass && dir_pass !== pass) return u.ali_403();
+      const dirs = await t.get_dirs(dirId, cookie);
+      const filtered_files = files.map(f.file);
+      const filtered_dirs = dirs.map(f.dir);
+      const join = filtered_dirs.concat(filtered_files);
+      return u.ali_200(resp, join);
+    } else if (/^\/file\/[0-9a-z]+$/.test(path)) {
+      // 文件地址
+      const data = await t.get_file(path.split("/")[2], cookie);
+      return u.ali_302(resp, data.downloadUrl);
+    } else {
+      return u.ali_404(resp);
+    }
+  } catch (error) {
+    return u.ali_500(resp);
+  }
+
+}
