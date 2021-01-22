@@ -20,8 +20,12 @@ exports.main_handler = async (event, context, callback) => {
       const dir_pass = u.pick_pass(files);
       if (dir_pass && dir_pass !== pass) return u.res_403();
       const dirs = await t.get_dirs(dirId, cookie);
-      const filtered_files = files.map(f.file);
-      const filtered_dirs = dirs.map(f.dir);
+      const filtered_files = files
+        .filter(f => !/^.+\.password$/.test(f.fileName))
+        .map(f.file);
+      const filtered_dirs = dirs
+        .filter(d => d.title)
+        .map(f.dir);
       const join = filtered_dirs.concat(filtered_files);
       return u.res_200(join);
     } else if (/^\/file\/[0-9a-z]+$/.test(path)) {
@@ -57,8 +61,12 @@ exports.handler = async (req, resp, context) => {
       const dir_pass = u.pick_pass(files);
       if (dir_pass && dir_pass !== pass) return u.ali_403();
       const dirs = await t.get_dirs(dirId, cookie);
-      const filtered_files = files.map(f.file);
-      const filtered_dirs = dirs.map(f.dir);
+      const filtered_files = files
+        .filter(f => !/^.+\.password$/.test(f.fileName))
+        .map(f.file);
+      const filtered_dirs = dirs
+        .filter(d => d.title)
+        .map(f.dir);
       const join = filtered_dirs.concat(filtered_files);
       return u.ali_200(resp, join);
     } else if (/^\/file\/[0-9a-z]+$/.test(path)) {
