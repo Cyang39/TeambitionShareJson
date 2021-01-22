@@ -7,10 +7,10 @@
 ### /
 显示项目列表，[在线演示](https://service-5hj05gr1-1256971770.sh.apigw.tencentcs.com/release/pan?password=123456)
 
-### /<Collection ID> 
+### /Collection_ID
 显示文件夹内列表，[在线演示](https://service-5hj05gr1-1256971770.sh.apigw.tencentcs.com/release/pan/600580d7acb0d8004a15f884)
 
-### /file/<Work ID>
+### /file/Work_ID
 重定向到文件，[在线演示](https://service-5hj05gr1-1256971770.sh.apigw.tencentcs.com/release/pan/file/6007ba5a62036200447b2823)（直接点击此链接将下载一个文件）
 
 ## 参考项目
