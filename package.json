@@ -1,0 +1,11 @@
+{
+  "name": "teambition-pan-json",
+  "version": "0.0.3",
+  "description": "A json server to share teambition upload file, designed for cloud function.",
+  "main": "index.js",
+  "author": "cyang39",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
