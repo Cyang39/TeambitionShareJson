@@ -34,6 +34,7 @@ exports.main_handler = async (event, context, callback) => {
     }
   } catch (error) {
     // 数据出错
+    console.log(error);
     return u.res_500();
   }
 };
@@ -68,6 +69,7 @@ exports.handler = async (req, resp, context) => {
       return u.ali_404(resp);
     }
   } catch (error) {
+    console.log(error);
     return u.ali_500(resp);
   }
 
