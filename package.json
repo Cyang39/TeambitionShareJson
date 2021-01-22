@@ -1,5 +1,5 @@
 {
-  "name": "teambition-pan-json",
+  "name": "teambition-share-json",
   "version": "0.0.3",
   "description": "A json server to share teambition upload file, designed for cloud function.",
   "main": "index.js",
