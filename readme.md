@@ -24,6 +24,7 @@
 ## 参考项目
 - [FlxSNX/TeambitionShare](https://github.com/FlxSNX/TeambitionShare)
 - [Teambition项目直链解析平台，无限容量，无需内测，支持永久直链，列目录，目录加密](https://www.jianshu.com/p/af2f569abe83)
+- [腾讯云 Serverless 最佳实践](https://github.com/TencentCloud/serverless)
 
 ## 目录密码
 - 项目列表密码在 `config.js` 中设置;
